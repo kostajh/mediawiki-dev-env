@@ -1,0 +1,28 @@
+{
+    "name": "kostajh/mediawiki-dev-env",
+    "description": "Development environment for MediaWiki",
+    "type": "project",
+    "bin": ["bin/mwdev" ],
+    "require": {
+        "symfony/console": "~4.4|~5",
+        "symfony/process": "~4.4|~5"
+    },
+    "license": "GNU GPL v2",
+    "autoload": {
+        "psr-4": {
+            "MediaWikiDevEnv\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kosta Harlan",
+            "email": "kharlan@wikimedia.org"
+        }
+    ],
+    "require-dev": {
+        "mediawiki/mediawiki-codesniffer": "^28.0"
+    },
+    "scripts": {
+        "phpcs": "phpcs -p -s"
+    }
+}
