@@ -35,9 +35,14 @@ class Serve extends Command {
 			);
 			$this->runDockerComposeUp( $dockerComposeCommand, $output );
 		}
-		$process = new Process(
-			[ 'php', '-d', 'output_buffering=Off', '-S', '127.0.0.1:9412', 'maintenance/dev/includes/router.php' ]
-		);
+		$process = new Process( [
+			'php',
+			'-d',
+			'output_buffering=Off',
+			'-S',
+			'127.0.0.1:9412',
+			'maintenance/dev/includes/router.php'
+		] );
 		$process->setEnv( [ 'MWDEV_REDIS' => $input->getOption( 'with-redis' ) ] );
 		$process->setTimeout( null );
 		$process->setIdleTimeout( null );
