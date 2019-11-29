@@ -54,6 +54,11 @@ The local site URL is `http://127.0.0.1:9412`
 - [Symfony local server](https://symfony.com/doc/current/setup/symfony_server.html)
 - [MediaWiki-Docker-Dev](https://www.mediawiki.org/wiki/MediaWiki-Docker-Dev)
 - [local-charts](https://gerrit.wikimedia.org/r/plugins/gitiles/releng/local-charts/)
+- [Wikimedia TechConf discussion](https://phabricator.wikimedia.org/T238224)
+
+## Limitations / Caveats
+
+- PHP's built-in server is single threaded. That means if you do things like issue a curl request from within MediaWiki to the same MediaWiki instance, that request will timeout.
 
 ## Roadmap
 
