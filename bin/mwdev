@@ -3,9 +3,13 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use MediaWikiDevEnv\Command\Install;
 use MediaWikiDevEnv\Command\Serve;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
-$application->add( new Serve() );
+$application->addCommands( [
+	new Serve(),
+	new Install()
+] );
 $application->run();
