@@ -12,17 +12,16 @@ jobs:
             - v1-dependencies-{{ checksum "composer.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
       - run: composer install -n --prefer-dist
-
+      - run: composer phpcs
+      - run: git clone --depth 1 https://gerrit.wikimedia.org/r/mediawiki/core ~/core
+      - run: cp .circleci/composer.local.ci.json ~/core/composer.local.json
+      - run: cd ~/core && composer update
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
-      - run: composer phpcs
-
-      - run: git clone --depth 1 https://gerrit.wikimedia.org/r/mediawiki/core ~/core
-      - run: cp .circleci/composer.local.ci.json ~/core/composer.local.json
-      - run: cd ~/core && composer update
       - run: cd ~/core && composer require --dev kostajh/mediawiki-dev-env @dev
       - run: cd ~/core && vendor/bin/mwdev install
+      - run: cd ~/core && vendor/bin/mwdev serve &
+      - run: curl -sLI http://127.0.0.1:9412 | grep "200 OK"
