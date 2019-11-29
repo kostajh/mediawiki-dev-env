@@ -23,5 +23,3 @@ jobs:
             - ./vendor
       - run: cd ~/core && composer require --dev kostajh/mediawiki-dev-env @dev
       - run: cd ~/core && vendor/bin/mwdev install
-      - run: cd ~/core && vendor/bin/mwdev serve &
-      - run: curl -sLI http://127.0.0.1:9412 | grep "200 OK"
