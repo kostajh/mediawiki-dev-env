@@ -30,7 +30,7 @@ Clone MediaWiki core. Create a `composer.local.json` file with these contents:
 
 ```
 
-Run `composer require --dev kostajh/mediawiki-dev-env`
+Run `composer update` and then `composer require --dev kostajh/mediawiki-dev-env`
 
 ## Usage
 

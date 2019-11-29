@@ -40,4 +40,4 @@ Create a `composer.local.json` file with these contents:
 }
 ```
 
-Then run `composer require --dev kostajh/mediawiki-dev-env @dev` inside MediaWiki core. You can now make changes to `mediawiki-dev-env` and they'll show up when you run `vendor/bin/mwdev` inside the MediaWiki core repo.
+Then run `composer update` and `composer require --dev kostajh/mediawiki-dev-env @dev` inside MediaWiki core. You can now make changes to `mediawiki-dev-env` and they'll show up when you run `vendor/bin/mwdev` inside the MediaWiki core repo.
