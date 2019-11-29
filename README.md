@@ -48,6 +48,13 @@ The local site URL is `http://127.0.0.1:9412`
 - Ease of use: Abstract away the tedious bits of `maintenance/install.php` and craft a `LocalSettings.php` file when possible
 - Reuse in CI: The same install/serve commands should be usable in CI for running integration and end-to-end tests
 
+### Inspiration
+
+- ["QuickWiki"](https://wikitech.wikimedia.org/wiki/Performance/Fresnel#Quick_MediaWiki)
+- [Symfony local server](https://symfony.com/doc/current/setup/symfony_server.html)
+- [MediaWiki-Docker-Dev](https://www.mediawiki.org/wiki/MediaWiki-Docker-Dev)
+- [local-charts](https://gerrit.wikimedia.org/r/plugins/gitiles/releng/local-charts/)
+
 ## Roadmap
 
 - [ ] MySQL container
