@@ -4,8 +4,8 @@
     "type": "project",
     "bin": ["bin/mwdev" ],
     "require": {
-        "symfony/console": "~4.4|~5",
-        "symfony/process": "~4.4|~5"
+        "symfony/console": "~4",
+        "symfony/process": "~4"
     },
     "license": "GNU GPL v2",
     "autoload": {
