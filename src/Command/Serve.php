@@ -38,7 +38,7 @@ class Serve extends Command {
 		$process = new Process(
 			[ 'php', '-d', 'output_buffering=Off', '-S', '127.0.0.1:9412' ]
 		);
-		$process->setEnv( [ 'MWDEV_REDIS' => true ] );
+		$process->setEnv( [ 'MWDEV_REDIS' => $input->getOption( 'with-redis' ) ] );
 		$process->setTimeout( null );
 		$process->setIdleTimeout( null );
 		$process->run( function ( $type, $buffer ) use ( $output, $process ) {

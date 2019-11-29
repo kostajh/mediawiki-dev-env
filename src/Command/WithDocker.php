@@ -8,7 +8,11 @@ use Symfony\Component\Process\Process;
 trait WithDocker {
 
 	private function useDocker( InputInterface $input ) {
-		return $input->getOption( 'with-redis' );
+		try {
+			return $input->getOption( 'with-redis' );
+		} catch ( \InvalidArgumentException $exception ) {
+			return false;
+		}
 	}
 
 	private function getDockerComposeCommand( InputInterface $input ) {
