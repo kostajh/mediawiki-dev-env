@@ -6,16 +6,20 @@ jobs:
       - image: circleci/php:7.3-node-browsers
     steps:
       - checkout
+      - run: sudo docker-php-ext-install pcntl
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "composer.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
       - run: composer install -n --prefer-dist
-
+      - run: composer phpcs
+      - run: git clone --depth 1 https://gerrit.wikimedia.org/r/mediawiki/core ~/core
+      - run: cp .circleci/composer.local.ci.json ~/core/composer.local.json
+      - run: cd ~/core && composer update
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
-      - run: composer phpcs
+      - run: cd ~/core && composer require --dev kostajh/mediawiki-dev-env @dev
+      - run: cd ~/core && vendor/bin/mwdev install

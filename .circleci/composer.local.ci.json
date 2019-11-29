@@ -1,0 +1,27 @@
+{
+	"extra": {
+		"merge-plugin": {
+			"include": [
+				"extensions/*/composer.json",
+				"skins/*/composer.json"
+			]
+		},
+		"installer-paths": {
+			"skins/{$name}/": [
+				"type:mediawiki-skin"
+			]
+		}
+	},
+	"require": {
+		"mediawiki/vector-skin": "dev-master"
+	},
+	"repositories": {
+		"mediawiki-dev-env": {
+			"type": "path",
+			"url": "/home/circleci/project",
+			"options": {
+				"symlink": true
+			}
+		}
+	}
+}
