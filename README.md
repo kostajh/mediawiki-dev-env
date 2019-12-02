@@ -25,12 +25,15 @@ Clone MediaWiki core. Create a `composer.local.json` file with these contents:
   },
   "require": {
     "mediawiki/vector-skin": "dev-master"
+  },
+  "require-dev": {
+	"kostajh/mediawiki-dev-env": "@dev"
   }
 }
 
 ```
 
-Run `composer update` and then `composer require --dev kostajh/mediawiki-dev-env`
+Run `composer update`.
 
 ## Usage
 
