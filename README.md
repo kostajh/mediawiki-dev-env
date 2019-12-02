@@ -8,7 +8,7 @@ tl;dr: Use the host machine for PHP (speed and ease of use with for example XDeb
 
 Clone MediaWiki core. Create a `composer.local.json` file with these contents:
 
-```
+``` json
 {
   "extra": {
     "merge-plugin": {
