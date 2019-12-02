@@ -37,7 +37,7 @@ class Install extends Command {
 		$dockerComposeCommand = $this->getDockerComposeCommand( $input );
 
 		if ( $dockerComposeCommand ) {
-			$this->runDockerComposeUp( $dockerComposeCommand, $output );
+			$this->runDockerCompose( $output, $dockerComposeCommand, [ 'up', '-d' ] );
 		}
 
 		$process = new Process( [

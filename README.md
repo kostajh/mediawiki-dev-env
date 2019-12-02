@@ -59,9 +59,10 @@ The local site URL is `http://127.0.0.1:9412`
 ## Limitations / Caveats
 
 - PHP's built-in server is single threaded. That means if you do things like issue a curl request from within MediaWiki to the same MediaWiki instance, that request will timeout.
+- The mechanism for injecting settings required by services that use Docker (ElasticSearch, Redis) requires an environment variable to be set. This is done automatically with the `serve` command, but to execute a maintenance script from the command-line, you'll need to run e.g. `MWDEV_REDIS=1 php maintenance/runJobs.php`. Suggestions for improving this are welcome.
 
 ## Roadmap
 
 - [ ] MySQL container
 - [ ] Replicated MySQL containers (1 master, one replica)
-- [ ] ElasticSearch container
+- [X] ElasticSearch container
