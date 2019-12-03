@@ -1,7 +1,7 @@
 {
     "name": "kostajh/mediawiki-dev-env",
     "description": "Development environment for MediaWiki",
-    "type": "project",
+    "type": "library",
     "bin": ["bin/mwdev" ],
     "require": {
         "symfony/console": "~4",
