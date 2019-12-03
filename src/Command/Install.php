@@ -62,6 +62,8 @@ class Install extends Command {
 			$output->writeln( '<info>' . trim( $buffer ) . '</info>' );
 		} );
 		$settingsLoader = <<<'FILE_CONTENTS'
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 $settingsFiles = glob( getcwd() . '/vendor/kostajh/mediawiki-dev-env/config/settings.d/*.php' );
 foreach( $settingsFiles as $settingsFile ) {
 	require_once $settingsFile;

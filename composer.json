@@ -5,7 +5,8 @@
     "bin": ["bin/mwdev" ],
     "require": {
         "symfony/console": "~4",
-        "symfony/process": "~4"
+        "symfony/process": "~4",
+        "vlucas/phpdotenv": "^4.0"
     },
     "license": "GNU GPL v2",
     "autoload": {

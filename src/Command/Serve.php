@@ -36,6 +36,18 @@ class Serve extends Command {
 			unlink( $pidFile );
 			posix_kill( (int)file_get_contents( $pidFile ), SIGKILL );
 		}
+		$dotEnvFile = getcwd() . '/.mwdev.env';
+		if ( file_exists( $dotEnvFile ) ) {
+			unlink( $dotEnvFile );
+		}
+		$dotEnvContents = [];
+		if ( $input->getOption( 'with-redis' ) ) {
+			$dotEnvContents[] = 'MWDEV_REDIS=1';
+		}
+		if ( $input->getOption( 'with-elasticsearch' ) ) {
+			$dotEnvContents[] = 'MWDEV_ELASTICSEARCH=1';
+		}
+		file_put_contents( $dotEnvFile, implode( "\n", $dotEnvContents ) );
 		$dockerComposeCommand = $this->getDockerComposeCommand( $input );
 
 		if ( $dockerComposeCommand ) {
@@ -52,10 +64,6 @@ class Serve extends Command {
 			'-S',
 			'127.0.0.1:9412',
 			'maintenance/dev/includes/router.php'
-		] );
-		$process->setEnv( [
-			'MWDEV_REDIS' => $input->getOption( 'with-redis' ),
-			'MWDEV_ELASTICSEARCH' => $input->getOption( 'with-elasticsearch' )
 		] );
 		$process->setTimeout( null );
 		$process->setIdleTimeout( null );

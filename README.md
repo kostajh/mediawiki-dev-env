@@ -2,7 +2,9 @@
 
 Experimental project to combine best parts of various MediaWiki development environments.
 
-tl;dr: Use the host machine for PHP (speed and ease of use with for example XDebug), and containers for everything else (MySQL, Redis, ElasticSearch etc).
+tl;dr: PHP process on the host, containers for everything else.
+
+Use the host machine for PHP (speed and ease of use with configuring XDebug, IDE and tools), and containers for heavy lifting of more complicated services (MySQL, Redis, ElasticSearch etc).
 
 ## Install 
 
@@ -39,7 +41,7 @@ Run `composer update`.
 
 Install MediaWiki: `vendor/bin/mwdev install` 
 
-Serve MediaWiki: `vendor/bin/mwdev serve`
+Serve MediaWiki: `vendor/bin/mwdev serve`. Run `vendor/bin/mwdev serve --help` to see how to run with additional services.
 
 The local site URL is `http://127.0.0.1:9412`
 
@@ -62,10 +64,11 @@ The local site URL is `http://127.0.0.1:9412`
 ## Limitations / Caveats
 
 - PHP's built-in server is single threaded. That means if you do things like issue a curl request from within MediaWiki to the same MediaWiki instance, that request will timeout.
-- The mechanism for injecting settings required by services that use Docker (ElasticSearch, Redis) requires an environment variable to be set. This is done automatically with the `serve` command, but to execute a maintenance script from the command-line, you'll need to run e.g. `MWDEV_REDIS=1 php maintenance/runJobs.php`. Suggestions for improving this are welcome.
 
 ## Roadmap
 
+- [ ] Fix the crufty integration with `docker-compose` commands.
 - [ ] MySQL container
 - [ ] Replicated MySQL containers (1 master, one replica)
 - [X] ElasticSearch container
+- [ ] Lightweight proxy for nicer domain names and/or port 80
